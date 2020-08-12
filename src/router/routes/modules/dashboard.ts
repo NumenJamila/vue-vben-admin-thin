@@ -24,23 +24,7 @@ const routes: RouteConfigEx[] = [
     component: () => createAsyncComponent(import('@/views/dashboard/welcome/index.vue')),
     meta: {
       title: '欢迎页',
-    },
-  },
-  {
-    path: '/analysis',
-    name: 'Analysis',
-    component: () => createAsyncComponent(import('@/views/dashboard/analysis/index.vue')),
-    meta: {
-      title: '分析页',
       affix: true,
-    },
-  },
-  {
-    path: '/workbench',
-    name: 'Workbench',
-    component: () => createAsyncComponent(import('@/views/dashboard/workbench/index.vue')),
-    meta: {
-      title: '工作台',
     },
   },
   {

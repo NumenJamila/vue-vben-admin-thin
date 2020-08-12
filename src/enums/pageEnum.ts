@@ -3,7 +3,8 @@
  */
 export enum pageEnum {
   BASE_LOGIN = '/login',
-  BASE_HOME = '/dashboard/analysis',
+  // 首页
+  BASE_HOME = '/dashboard/welcome',
   // 错误页地址
   ERROR_PAGE = '/error-page',
 }

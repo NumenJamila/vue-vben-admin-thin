@@ -104,9 +104,7 @@ function configOptimization(config) {
             packageName = 'design';
           } else if (
             packageName.indexOf('echarts') !== -1 ||
-            packageName.indexOf('zrender') !== -1 ||
-            packageName.indexOf('apexcharts') !== -1 ||
-            packageName.indexOf('vue-baidu-map') !== -1
+            packageName.indexOf('zrender') !== -1
           ) {
             packageName = 'chart';
           } else if (packageName.indexOf('xlsx') !== -1) {

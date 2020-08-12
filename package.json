@@ -1,6 +1,6 @@
 {
-  "name": "vue-vben-admin",
-  "version": "1.2.1",
+  "name": "vue-vben-admin-thin",
+  "version": "0.0.1",
   "private": true,
   "keywords": [
     "vue",
@@ -11,7 +11,8 @@
     "admin",
     "vben",
     "typescript",
-    "vue-vben-admin"
+    "vue-vben-admin",
+    "vue-vben-admin-thin"
   ],
   "scripts": {
     "bootstrap": "yarn",
@@ -39,33 +40,26 @@
   "dependencies": {
     "@vue/composition-api": "^1.0.0-beta.9",
     "ant-design-vue": "^1.6.4",
-    "apexcharts": "^3.20.0",
+    "driver.js": "^0.9.8",
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "crypto-js": "^3.3.0",
-    "driver.js": "^0.9.8",
     "echarts": "^4.8.0",
     "lodash": "^4.17.19",
     "mockjs": "^1.1.0",
     "moment": "^2.27.0",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
-    "print-js": "^1.0.63",
     "qrcode": "^1.4.4",
     "tinymce": "5.2.2",
     "vue": "^2.6.11",
-    "vue-apexcharts": "^1.6.0",
-    "vue-baidu-map": "^0.21.22",
-    "vue-count-to": "^1.0.13",
     "vue-draggable-resizable": "^2.2.0",
     "vue-i18n": "^8.20.0",
-    "vue-image-crop-upload": "^2.5.0",
     "vue-router": "^3.4.3",
     "vuedraggable": "^2.24.0",
     "vuex": "^3.4.0",
     "vuex-module-decorators": "^0.17.0",
-    "xlsx": "^0.16.4",
-    "zxcvbn": "^4.4.2"
+    "xlsx": "^0.16.4"
   },
   "devDependencies": {
     "@babel/register": "^7.10.5",

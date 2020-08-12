@@ -7,7 +7,6 @@
   import LayoutBread from './LayoutBread.vue';
 
   import LockAction from './actions/LockActionItem.vue';
-  import GithubModal from './actions/GithubModal.vue';
   import { useModal } from '@/components/modal/index';
 
   import LayoutMenu from './LayoutMenu.vue';
@@ -27,10 +26,10 @@
       const { toggleFullscreen, isFullscreenRef } = useFullscreen();
 
       const [register, { isFirstLoadRef, openModal }] = useModal();
-      const [
-        registerGithubModal,
-        { isFirstLoadRef: isFirstLoadGithubModalRef, openModal: openGithubModal },
-      ] = useModal();
+      // const [
+      //   registerGithubModal,
+      //   { isFirstLoadRef: isFirstLoadGithubModalRef, openModal: openGithubModal },
+      // ] = useModal();
       const { refreshPage } = useTabs();
       const headerClass = computed(() => {
         const theme = appStore.projCfgState!.headerSetting.theme;
@@ -45,11 +44,7 @@
           visible: true,
         });
       }
-      function handleHelp() {
-        openGithubModal({
-          visible: true,
-        });
-      }
+
       function handleToErrorList() {
         errorStore.commitErrorListCountState(0);
         root.$router.push('/error-log/index');
@@ -58,7 +53,7 @@
         const { getProjCfg } = appStore;
         const {
           useErrorHandle,
-          showGithubButton,
+          // showGithubButton,
           showLogo,
           headerSetting: { theme: headerTheme } = {},
           menuSetting: { mode, type: menuType } = {},
@@ -101,19 +96,6 @@
                 </Tooltip>
               )}
 
-              {showGithubButton && (
-                <Tooltip>
-                  <template slot="title">帮助</template>
-                  <div
-                    class={`${prefixCls}__action-item`}
-                    onClick={handleHelp}
-                    id="elem-driver-action-github"
-                  >
-                    <Icon type="github" class={`${prefixCls}__action-icon`} />
-                  </div>
-                </Tooltip>
-              )}
-
               <Tooltip>
                 <template slot="title">刷新</template>
                 <div
@@ -145,7 +127,6 @@
               <UserDropdown class={`${prefixCls}__user-dropdown`} />
             </div>
             {!unref(isFirstLoadRef) && <LockAction onRegister={register} />}
-            {!unref(isFirstLoadGithubModalRef) && <GithubModal onRegister={registerGithubModal} />}
           </Layout.Header>
         );
       };
