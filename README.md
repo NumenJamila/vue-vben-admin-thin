@@ -11,6 +11,8 @@
 
 [在线预览](https://vvbin.cn/thin/)
 
+[精简在线预览](https://vvbin.cn/thin/)
+
 <p align="center">
     <img alt="VbenAdmin Logo" width="100%" src="./docs/imgs/preview1.png">
     <img alt="VbenAdmin Logo" width="100%" src="./docs/imgs/preview2.png">
