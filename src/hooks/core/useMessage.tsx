@@ -76,6 +76,7 @@ function createWarningModal(options: ModalOptionsPartial) {
 export function useMessage() {
   return {
     createMessage: Message,
+    // notification,
     createConfirm: createConfirm,
     createSuccessModal,
     createErrorModal,
