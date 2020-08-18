@@ -1,4 +1,4 @@
-import { Vue } from 'compatible-vue';
+// import { Vue } from 'compatible-vue';
 import { createStorage } from '@/utils/storage/index';
 import { isIeFn } from '@/utils/browser';
 
@@ -10,12 +10,12 @@ const ss = createStorage();
 /**
  * @description:  Persistent cache
  */
-const cacheStore = Vue.observable({
+const cacheStore = {
   // localstorage cache
   local: {},
   // sessionstorage cache
   session: {},
-});
+};
 
 function initCache() {
   cacheStore.local = ls.get(BASE_LOCAL_CACHE_KEY) || {};

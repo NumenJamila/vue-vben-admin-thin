@@ -24,11 +24,7 @@
       const { prefixCls } = useDesign('layout-header');
       const { toggleFullscreen, isFullscreenRef } = useFullscreen();
 
-      const [register, { isFirstLoadRef, openModal }] = useModal();
-      // const [
-      //   registerGithubModal,
-      //   { isFirstLoadRef: isFirstLoadGithubModalRef, openModal: openGithubModal },
-      // ] = useModal();
+      const [register, { openModal }] = useModal();
       const { refreshPage } = useTabs();
       const headerClass = computed(() => {
         const theme = appStore.projCfgState!.headerSetting.theme;
@@ -49,7 +45,7 @@
         const {
           // showGithubButton,
           showLogo,
-          headerSetting: { theme: headerTheme } = {},
+          headerSetting: { theme: headerTheme, useLockPage, showRedo, showFullScreen } = {},
           menuSetting: { mode, type: menuType } = {},
           showBreadCrumb,
         } = getProjCfg;
@@ -71,41 +67,49 @@
                 <LayoutMenu theme={headerTheme} />
               </div>
             )}
+
             {mode !== MenuModeEnum.HORIZONTAL && showBreadCrumb && (
               <LayoutBread class={`${prefixCls}__bread`} />
             )}
+
             <div class={`${prefixCls}__action`}>
-              <Tooltip>
-                <template slot="title">刷新</template>
-                <div
-                  class={`${prefixCls}__action-item`}
-                  onClick={refreshPage}
-                  id="elem-driver-action-refresh"
-                >
-                  <Icon type="redo" class={`${prefixCls}__action-icon`} />
-                </div>
-              </Tooltip>
+              {showRedo && (
+                <Tooltip>
+                  <template slot="title">刷新</template>
+                  <div
+                    class={`${prefixCls}__action-item`}
+                    onClick={refreshPage}
+                    id="elem-driver-action-refresh"
+                  >
+                    <Icon type="redo" class={`${prefixCls}__action-icon`} />
+                  </div>
+                </Tooltip>
+              )}
 
-              <Tooltip>
-                <template slot="title">锁定屏幕</template>
-                <div class={`${prefixCls}__action-item`} onClick={handleLockPage}>
-                  <Icon type="lock" class={`${prefixCls}__action-icon`} />
-                </div>
-              </Tooltip>
+              {useLockPage && (
+                <Tooltip>
+                  <template slot="title">锁定屏幕</template>
+                  <div class={`${prefixCls}__action-item`} onClick={handleLockPage}>
+                    <Icon type="lock" class={`${prefixCls}__action-icon`} />
+                  </div>
+                </Tooltip>
+              )}
 
-              <Tooltip>
-                <template slot="title">{unref(isFullscreenRef) ? '退出全屏' : '全屏'}</template>
-                <div class={`${prefixCls}__action-item`} onClick={toggleFullscreen}>
-                  <Icon
-                    type={!unref(isFullscreenRef) ? 'fullscreen' : 'fullscreen-exit'}
-                    class={`${prefixCls}__action-icon`}
-                  />
-                </div>
-              </Tooltip>
+              {showFullScreen && (
+                <Tooltip>
+                  <template slot="title">{unref(isFullscreenRef) ? '退出全屏' : '全屏'}</template>
+                  <div class={`${prefixCls}__action-item`} onClick={toggleFullscreen}>
+                    <Icon
+                      type={!unref(isFullscreenRef) ? 'fullscreen' : 'fullscreen-exit'}
+                      class={`${prefixCls}__action-icon`}
+                    />
+                  </div>
+                </Tooltip>
+              )}
 
               <UserDropdown class={`${prefixCls}__user-dropdown`} />
             </div>
-            {!unref(isFirstLoadRef) && <LockAction onRegister={register} />}
+            <LockAction onRegister={register} />
           </Layout.Header>
         );
       };

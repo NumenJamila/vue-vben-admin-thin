@@ -26,7 +26,7 @@
           <div class={prefixCls}>
             {actions &&
               actions.length &&
-              actions.map((action) => {
+              actions.map((action, index) => {
                 const {
                   disabled = false,
                   on,
@@ -45,6 +45,7 @@
                     on={on}
                     disabled={disabled}
                     color={color}
+                    key={index}
                   >
                     {label}
                     {icon && <Icon type={icon} />}
@@ -61,6 +62,7 @@
                   } = popConfirm;
                   return (
                     <Popconfirm
+                      key={`P-${index}`}
                       title={title}
                       onConfirm={confirm}
                       onCancel={cancel}

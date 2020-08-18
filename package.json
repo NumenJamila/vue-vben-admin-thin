@@ -1,6 +1,6 @@
 {
   "name": "vue-vben-admin-thin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "keywords": [
     "vue",
@@ -38,7 +38,7 @@
     "release": "release-it"
   },
   "dependencies": {
-    "@vue/composition-api": "^1.0.0-beta.9",
+    "@vue/composition-api": "^1.0.0-beta.10",
     "ant-design-vue": "^1.6.4",
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
