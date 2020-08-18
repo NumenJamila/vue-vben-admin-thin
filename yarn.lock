@@ -6447,6 +6447,7 @@ forever-agent@~0.6.1:
   integrity sha1-+8cfDEGt6zf5bFd60e1C2P2sypE=
 
 "fork-ts-checker-webpack-plugin-v5@npm:fork-ts-checker-webpack-plugin@^5.0.11", fork-ts-checker-webpack-plugin@^5.0.13:
+  name fork-ts-checker-webpack-plugin-v5
   version "5.1.0"
   resolved "https://registry.npm.taobao.org/fork-ts-checker-webpack-plugin/download/fork-ts-checker-webpack-plugin-5.1.0.tgz?cache=0&sync_timestamp=1597743936380&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ffork-ts-checker-webpack-plugin%2Fdownload%2Ffork-ts-checker-webpack-plugin-5.1.0.tgz#586fbee24aeea950c53bab529e32017f543e71cf"
   integrity sha1-WG++4kruqVDFO6tSnjIBf1Q+cc8=
@@ -9437,20 +9438,6 @@ markdown-escapes@^1.0.0:
   resolved "https://registry.npm.taobao.org/markdown-escapes/download/markdown-escapes-1.0.4.tgz#c95415ef451499d7602b91095f3c8e8975f78535"
   integrity sha1-yVQV70UUmddgK5EJXzyOiXX3hTU=
 
-<<<<<<< HEAD
-=======
-markdown-it@^8.4.0:
-  version "8.4.2"
-  resolved "https://registry.npm.taobao.org/markdown-it/download/markdown-it-8.4.2.tgz#386f98998dc15a37722aa7722084f4020bdd9b54"
-  integrity sha1-OG+YmY3BWjdyKqdyIIT0Agvdm1Q=
-  dependencies:
-    argparse "^1.0.7"
-    entities "~1.1.1"
-    linkify-it "^2.0.0"
-    mdurl "^1.0.1"
-    uc.micro "^1.0.5"
-
->>>>>>> deac39d4f61ed01eb02f3b7401ed09d40b243735
 markdown-table@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/markdown-table/download/markdown-table-2.0.0.tgz#194a90ced26d31fe753d8b9434430214c011865b"
@@ -14350,25 +14337,6 @@ vm-browserify@^1.0.1:
   resolved "https://registry.npm.taobao.org/vm-browserify/download/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha1-eGQcSIuObKkadfUR56OzKobl3aA=
 
-<<<<<<< HEAD
-=======
-vue-baidu-map@^0.21.22:
-  version "0.21.22"
-  resolved "https://registry.npm.taobao.org/vue-baidu-map/download/vue-baidu-map-0.21.22.tgz#6b76a91ef34f18a782d732ab0f541a1a3aa069e0"
-  integrity sha1-a3apHvNPGKeC1zKrD1QaGjqgaeA=
-  dependencies:
-    bmaplib.curveline "^1.0.0"
-    bmaplib.heatmap "^1.0.4"
-    bmaplib.lushu "^1.0.7"
-    bmaplib.markerclusterer "^1.0.13"
-    markdown-it "^8.4.0"
-
-vue-count-to@^1.0.13:
-  version "1.0.13"
-  resolved "https://registry.npm.taobao.org/vue-count-to/download/vue-count-to-1.0.13.tgz#3e7573ea6e64c2b2972f64e0a2ab2e23c7590ff3"
-  integrity sha1-PnVz6m5kwrKXL2TgoqsuI8dZD/M=
-
->>>>>>> deac39d4f61ed01eb02f3b7401ed09d40b243735
 vue-draggable-resizable@^2.2.0:
   version "2.2.0"
   resolved "https://registry.npm.taobao.org/vue-draggable-resizable/download/vue-draggable-resizable-2.2.0.tgz#eb4581b6ddd6a20c5f54f99993c8646382523296"
