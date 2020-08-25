@@ -34,16 +34,15 @@ export const basicProps = {
   beforeFetch: {
     type: Function,
     default: null,
-  } as PropOptions<(...arg) => any>,
+  } as PropOptions<Fn>,
   afterFetch: {
     type: Function,
     default: null,
-  } as PropOptions<(...arg) => any>,
-
+  } as PropOptions<Fn>,
   handleSearchInfoFn: {
     type: Function,
     default: null,
-  } as PropOptions<(...arg) => any>,
+  } as PropOptions<Fn>,
   fetchSetting: {
     type: Object,
     default: () => {
@@ -57,6 +56,11 @@ export const basicProps = {
   } as PropOptions<FetchSetting>,
   // 立即请求接口
   immediate: { type: Boolean, default: true } as PropOptions<any>,
+
+  emptyDataIsShowTable: {
+    type: Boolean,
+    default: true,
+  } as PropOptions<boolean>,
   // 额外的请求参数
   searchInfo: {
     type: Object,

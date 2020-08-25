@@ -45,6 +45,7 @@
           ...unref(innerPropsRef),
         };
       });
+
       // const getPropsRef = computed(() => {
       //   lastPropsRef.value = {
       //     ...props,
@@ -85,6 +86,16 @@
         deleteSelectRowByKey,
         setSelectedRowKeys,
       } = useRowSelection(getMergeProps, emit);
+
+      const getEmptyDataIsShowTableRef = computed(() => {
+        const { emptyDataIsShowTable, useSearchForm } = unref(getMergeProps);
+        if (emptyDataIsShowTable || !useSearchForm) {
+          return true;
+        }
+
+        return !!unref(getDataSourceRef).length;
+      });
+
       const { prefixCls } = useDesign('basic-table');
 
       const renderTitle = () => {
@@ -126,15 +137,24 @@
           : [];
         const columns: BasicColumn[] = cloneDeep(unref(getColumnsRef));
         const index = columns.findIndex((item) => item.flag === 'INDEX');
+        const hasRowSummary = dataSource.some((item) => Reflect.has(item, '_row'));
+        const hasIndexSummary = dataSource.some((item) => Reflect.has(item, '_index'));
+
         if (index !== -1) {
-          Reflect.deleteProperty(columns[index], 'customRender');
+          if (hasIndexSummary) {
+            columns[index].customRender = (d) => d._index;
+            columns[index].ellipsis = false;
+          } else {
+            Reflect.deleteProperty(columns[index], 'customRender');
+          }
         }
-        if (unref(getRowSelectionRef)) {
+        if (unref(getRowSelectionRef) && hasRowSummary) {
           columns.unshift({
             width: 60,
-            title: 'total',
-            key: 'total',
-            customRender: () => '合计',
+            title: 'selection',
+            key: 'selectionKey',
+            align: 'center',
+            customRender: (d) => d._row,
           });
         }
         dataSource.forEach((item, i) => {
@@ -278,7 +298,7 @@
           compact: true,
         };
         return (
-          <div class={prefixCls}>
+          <div class={[prefixCls, useSearchForm && 'table-form-container']}>
             {useSearchForm && (
               <BasicForm
                 submitButtonOptions={{ loading: unref(loadingRef) }}
@@ -290,6 +310,7 @@
               </BasicForm>
             )}
             <Table
+              v-show={unref(getEmptyDataIsShowTableRef)}
               components={unref(getComponentsRef)}
               ref={tableElRef}
               on={{ ...listeners, change: handleTableChange }}
@@ -311,7 +332,7 @@
   @prefix-cls: ~'@{namespace}-basic-table';
   @border-color: hsla(0, 0%, 80.8%, 0.3);
   .@{prefix-cls} {
-    padding: 12px;
+    // padding: 12px;
 
     // .ant-table-fixed-header .ant-table-scroll .ant-table-header {
     //   overflow-y: hidden !important;
@@ -397,9 +418,22 @@
       overflow-y: scroll !important;
     }
 
+    .ant-table-fixed-right .ant-table-header {
+      border-left: 1px solid @border-color;
+
+      .ant-table-fixed {
+        border-bottom: none;
+      }
+    }
+
     .ant-table-fixed-left {
       .ant-table-header {
         overflow-y: hidden !important;
+        // border-right: 1px solid @border-color;
+      }
+
+      .ant-table-fixed {
+        border-bottom: none;
       }
 
       // .ant-table-body-inner {
@@ -444,6 +478,51 @@
       td {
         padding: 12px 8px;
       }
+    }
+  }
+
+  .ant-table-wrapper {
+    padding: 12px;
+    background: #fff;
+    border-radius: 2px;
+
+    .ant-table-title {
+      padding: 0 0 10px 0 !important;
+    }
+
+    .ant-table.ant-table-bordered .ant-table-title {
+      border: none !important;
+    }
+  }
+
+  .ant-table-footer {
+    .ant-table-wrapper {
+      padding: 0;
+    }
+  }
+
+  .table-form-container {
+    padding: 16px;
+
+    .ant-form {
+      padding: 12px 12px 4px 12px;
+      margin-bottom: 12px;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+    .ant-table-wrapper {
+      // padding: 12px;
+      // background: #fff;
+      border-radius: 2px;
+
+      // .ant-table-title {
+      //   padding: 0 0 10px 0 !important;
+      // }
+
+      // .ant-table.ant-table-bordered .ant-table-title {
+      //   border: none !important;
+      // }
     }
   }
 </style>

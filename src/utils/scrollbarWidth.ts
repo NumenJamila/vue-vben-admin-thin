@@ -1,13 +1,13 @@
-import { Vue } from 'compatible-vue';
+import { isWindow } from './is/index';
 
-let scrollBarWidth;
+let scrollBarWidth: number;
 
-export default function () {
-  if (Vue.prototype.$isServer) return 0;
+export default function (): number {
+  if (!isWindow) return 0;
   if (scrollBarWidth !== undefined) return scrollBarWidth;
 
   const outer = document.createElement('div');
-  outer.className = 'el-scrollbar__wrap';
+  outer.className = 'scrollbar__wrap';
   outer.style.visibility = 'hidden';
   outer.style.width = '100px';
   outer.style.position = 'absolute';
@@ -22,9 +22,8 @@ export default function () {
   outer.appendChild(inner);
 
   const widthWithScroll = inner.offsetWidth;
-  if (outer && outer.parentNode) {
-    outer.parentNode.removeChild(outer);
-  }
+  const parentNode = outer.parentNode;
+  parentNode && parentNode.removeChild(outer);
   scrollBarWidth = widthNoScroll - widthWithScroll;
 
   return scrollBarWidth;

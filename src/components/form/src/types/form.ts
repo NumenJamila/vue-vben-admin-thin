@@ -28,11 +28,32 @@ export interface ValidateResult<T> {
 export interface ComponentOn {
   [key: string]: Function;
 }
+export interface HelpComponentProps {
+  maxWidth: string;
+  // 是否显示序号
+  showIndex: boolean;
+  // 文本列表
+  text: any;
+  // 颜色
+  color: string;
+  // 字体大小
+  fontSize: string;
+  icon: string;
+  absolute: boolean;
+  // 定位
+  position: any;
+}
 export interface FormSchema {
   // 字段名
   field: string;
   // 标签名
   label: string;
+
+  // 文本右侧帮助文本
+  helpMessage?: string | string[];
+
+  // BaseHelp组件props
+  helpComponentProps?: Partial<HelpComponentProps>;
 
   // label宽度,有传的话 itemProps配置的 labelCol 和WrapperCol会失效
   labelWidth?: string | number;
@@ -122,7 +143,7 @@ export interface FormProps extends AllItemProps {
   compact: boolean;
 
   // 空白行span
-  emptySpan?: number;
+  emptySpan?: number | Partial<ColEx>;
   size: 'default' | 'small' | 'large';
   // 是否禁用
   disabled?: boolean;
@@ -143,6 +164,8 @@ export interface FormProps extends AllItemProps {
   showActionButtonGroup: boolean;
   // 操作列配置
   actionColOptions: Partial<ColEx>;
+  // 通用Col配置
+  baseColProps: Partial<ColEx>;
   // 显示重置按钮
   showResetButton: boolean;
   // 重置按钮配置
