@@ -27,14 +27,6 @@ const routes: RouteConfigEx[] = [
       affix: true,
     },
   },
-  {
-    path: '/driver',
-    name: 'DriverIndex',
-    component: () => createAsyncComponent(import('@/views/dashboard/driver/index.vue')),
-    meta: {
-      title: '引导页',
-    },
-  },
 ];
 
 export default {
